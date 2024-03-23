@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        Docker {
+        any {
             image 'gcc:latest' 
         }
     }
