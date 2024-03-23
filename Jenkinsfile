@@ -1,19 +1,19 @@
 pipeline {
     agent {
         docker {
-            image 'g++:latest' // Замените на имя образа, соответствующего вашему компилируемому языку программирования
+            image 'g++:latest' 
         }
     }
     stages {
         stage('Build') {
             steps {
-                sh 'g++ -o main main.o main.cpp' // Замените на соответствующую команду сборки вашего проекта
+                sh 'g++ -o main main.o main.cpp' 
             }
         }
     }
     post {
         success {
-            archiveArtifacts artifacts: 'main.o' // Замените на соответствующий путь/имя готового бинарника
+            archiveArtifacts artifacts: 'main.o' 
         }
     }
 }
