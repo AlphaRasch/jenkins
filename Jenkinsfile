@@ -1,19 +1,19 @@
 pipeline {
     agent {
         docker {
-            image 'g++:latest' 
+            image 'gcc:latest' 
         }
     }
     stages {
         stage('Build') {
             steps {
-                sh 'g++ -o main main.o main.cpp' 
+                sh 'g++ -o binary_search main.cpp' 
             }
         }
-    }
-    post {
-        success {
-            archiveArtifacts artifacts: 'main.o' 
+        stage('Archive') {
+            steps {
+                archiveArtifacts 'binary_search' 
+            }
         }
     }
 }
